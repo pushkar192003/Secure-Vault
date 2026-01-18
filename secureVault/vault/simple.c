@@ -10,7 +10,7 @@
    
 unsigned char key[4][8] ;
 void set_key(const unsigned char *k32) {
-    // k32 is a 32-byte buffer from Python
+   
     memcpy(key, k32, 32);
 }
 

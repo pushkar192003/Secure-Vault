@@ -27,21 +27,21 @@ def upload_file(request):
         if not check_password(password, request.user.password):
             return HttpResponseBadRequest("Incorrect account password") 
 
-        # 1️⃣ Encrypt file
+       
         encrypted_bytes = encrypt_file_upload(uploaded_file, password)
 
-        # 2️⃣ Generate secure encrypted filename
+        
         encrypted_name = f"{uuid.uuid4().hex}.bin"
         encrypted_dir = os.path.join(settings.MEDIA_ROOT, "vault", "encrypted")
         os.makedirs(encrypted_dir, exist_ok=True)
 
         encrypted_path = os.path.join(encrypted_dir, encrypted_name)
 
-        # 3️⃣ Write encrypted file to disk
+       
         with open(encrypted_path, "wb") as f:
             f.write(encrypted_bytes)
 
-        # 4️⃣ Save metadata in DB
+        
         VaultFile.objects.create(
             owner=request.user,
             original_filename=uploaded_file.name,
@@ -74,17 +74,17 @@ def download_file(request, file_id):
         if not os.path.exists(encrypted_path):
             return HttpResponseBadRequest("Encrypted file missing")
 
-        # 1️⃣ Read encrypted data
+        
         with open(encrypted_path, "rb") as f:
             encrypted_bytes = f.read()
 
-        # 2️⃣ Decrypt
+        
         try:
             decrypted_bytes = decrypt_file_download(encrypted_bytes, password)
         except Exception:
             return HttpResponseBadRequest("Invalid password or corrupted file")
 
-        # 3️⃣ Send file to user
+        
         response = HttpResponse(
             decrypted_bytes,
             content_type="application/octet-stream"
@@ -155,11 +155,11 @@ def permanent_delete(request, file_id):
         vault_file.encrypted_filename
     )
 
-    # 1️⃣ Remove encrypted file from disk
+    
     if os.path.exists(encrypted_path):
         os.remove(encrypted_path)
 
-    # 2️⃣ Remove DB record permanently
+    
     vault_file.delete()
 
     return redirect("recycle_bin")

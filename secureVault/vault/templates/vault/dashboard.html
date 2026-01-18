@@ -10,7 +10,7 @@
             <input type="text" placeholder="Search documents..." />
         </div>
 
-        <!-- 📂 FILE LIST -->
+        <!--  FILE LIST -->
         <div class="vault-list">
             {% if files %}
                 {% for file in files %}
@@ -50,7 +50,7 @@
             {% endif %}
         </div>
 
-        <!-- 🔐 Upload Section -->
+        <!--  Upload Section -->
         <div class="vault-upload">
             <form method="POST"
                   action="{% url 'upload_file' %}"

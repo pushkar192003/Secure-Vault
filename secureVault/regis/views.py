@@ -42,7 +42,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect("vault_dashboard")   # vault page
+            return redirect("vault_dashboard")   
         else:
             messages.error(request, "Invalid username or password")
             return redirect("login")

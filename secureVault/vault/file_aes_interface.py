@@ -28,7 +28,7 @@ except Exception as e:
  
     print(f"ERROR: Failed to load AES DLL at {DLL_PATH}. Encryption/Decryption will fail: {e}")
 if _AES_DLL is None:
-    print("⚠️ WARNING: aes.dll not loaded. Encryption disabled.")
+    print(" WARNING: aes.dll not loaded. Encryption disabled.")
 
 
 
@@ -45,7 +45,7 @@ def set_cipher_key_from_password(password: str):
     key = sha256(password.encode()).digest() 
     
     if len(key) != 32:
-        raise ValueError("Key must be exactly 32 bytes") # 32 bytes
+        raise ValueError("Key must be exactly 32 bytes")
     _AES_DLL.set_key((ctypes.c_ubyte * 32)(*key))
 
 
