@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="vault-wrapper">
+    <div class="vault-card">
+
+        <h2 class="vault-title">🗑️ Recycle Bin</h2>
+
+        <div class="vault-search">
+            <input type="text" placeholder="Search deleted documents..." />
+        </div>
+
+        <!-- 📂 DELETED FILE LIST -->
+        <div class="vault-list">
+            {% if files %}
+                {% for file in files %}
+                <div class="vault-item">
+                    <span class="vault-doc">
+                        🗑️ {{ file.original_filename }}
+                    </span>
+
+                    <!-- Restore -->
+                    <form
+                        method="POST"
+                        action="{% url 'restore_file' file.id %}"
+                        style="display:inline;"
+                    >
+                        {% csrf_token %}
+                        <button class="vault-btn">
+                            Restore
+                        </button>
+                    </form>
+
+                    <!-- Permanent Delete -->
+                    <form
+                        method="POST"
+                        action="{% url 'permanent_delete' file.id %}"
+                        style="display:inline;"
+                        onsubmit="return confirm('This action is irreversible. Permanently delete this file?');"
+                    >
+                        {% csrf_token %}
+                        <button class="vault-btn danger">
+                            Delete Permanently
+                        </button>
+                    </form>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="vault-empty">
+                    Recycle Bin is empty.
+                </p>
+            {% endif %}
+        </div>
+
+        <!-- 🔙 Back to dashboard -->
+        <div class="vault-upload">
+            <a href="{% url 'vault_dashboard' %}">
+                <button class="vault-btn">
+                    ← Back to Vault
+                </button>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

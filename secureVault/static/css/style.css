@@ -1,25 +1,22 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+/* Reset */
+* {
+    box-sizing: border-box;
 }
 
+/* Body */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* Navbar */
 .navbar {
     background-color: #111;
-    padding: 15px 30px;
+    padding: 14px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
-}
-
-.navbar a:hover {
-    color: #00ffcc;
 }
 
 .logo {
@@ -28,6 +25,223 @@ body {
     font-weight: bold;
 }
 
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: #00ffcc;
+}
+
+/* Page container */
 .content {
-    padding: 30px;
+    padding: 40px;
+    min-height: calc(100vh - 60px);
+}
+
+/* Centered pages (login / register only) */
+.center-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px);
+}
+
+/* Card */
+.card {
+    background: #fff;
+    padding: 30px 35px;
+    width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+.card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Inputs */
+.card input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.card input:focus {
+    outline: none;
+    border-color: #00bfa6;
+}
+
+/* Button */
+.card button {
+    width: 100%;
+    padding: 10px;
+    background: #00bfa6;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #009e8a;
+}
+
+/* Small text links */
+.card .small {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.card .small a {
+    color: #00bfa6;
+    text-decoration: none;
+}
+
+
+/* ===== VAULT PAGE ===== */
+
+.vault-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vault-card {
+    width: 650px;
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.vault-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #222;
+}
+
+/* Search bar */
+.vault-search {
+    margin-bottom: 25px;
+}
+
+.vault-search input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.vault-search input:focus {
+    outline: none;
+    border-color: #00bfa6;
+}
+
+/* Document list */
+.vault-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.vault-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f7fb;
+    padding: 14px 18px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.vault-item:hover {
+    background: #eef3f8;
+}
+
+.vault-doc {
+    font-size: 15px;
+    color: #333;
+}
+
+/* Download button */
+.vault-btn {
+    background: linear-gradient(135deg, #00bfa6, #009e8a);
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.vault-btn:hover {
+    opacity: 0.9;
+}
+
+/* ===== UPLOAD SECTION ===== */
+
+.vault-upload {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+}
+
+.vault-upload form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.upload-label {
+    padding: 10px 16px;
+    border: 2px dashed #00bfa6;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #00bfa6;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.upload-label:hover {
+    background: #e6f7f4;
+}
+
+.upload-btn {
+    background: linear-gradient(135deg, #00bfa6, #009e8a);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    opacity: 0.9;
+}
+.vault-btn.danger {
+    background-color: #e74c3c;
+}
+
+.vault-btn.danger:hover {
+    background-color: #c0392b;
 }

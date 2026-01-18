@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,14 @@
 </head>
 <body>
 
+
 <div class="navbar">
-    <div class="logo">🔐 SecureVault</div>
+    <div class="logo">SecureVault</div>
 
     <div>
         {% if user.is_authenticated %}
-            <a href="{% url 'dashboard' %}">Vault</a>
+            <span style="color:#ccc;">Hi, {{ user.username }}</span>
+            <a href="{% url 'vault_dashboard' %}">Vault</a>
             <a href="{% url 'logout' %}">Logout</a>
         {% else %}
             <a href="{% url 'register' %}">Register</a>
@@ -22,6 +25,7 @@
 </div>
 
 <div class="content">
+
     {% block content %}{% endblock %}
 </div>
 
