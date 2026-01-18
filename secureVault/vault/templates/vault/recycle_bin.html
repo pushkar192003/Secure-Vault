@@ -5,12 +5,27 @@
     <div class="vault-card">
 
         <h2 class="vault-title">🗑️ Recycle Bin</h2>
+            
+<!-- 🔍 Search + actions -->
+<div class="vault-header">
+    <div class="vault-search">
+        <input type="text" placeholder="Search deleted documents..." />
+    </div>
 
-        <div class="vault-search">
-            <input type="text" placeholder="Search deleted documents..." />
-        </div>
+    <div class="recycle-toolbar">
+        <form method="POST"
+              action="{% url 'empty_recycle_bin' %}"
+              onsubmit="return confirm('This will permanently delete all files. Continue?');">
+            {% csrf_token %}
+            <button class="vault-btn recycle-danger">
+                Empty Recycle Bin
+            </button>
+        </form>
+    </div>
+</div>
 
-        <!-- 📂 DELETED FILE LIST -->
+
+        <!--  DELETED FILE LIST -->
         <div class="vault-list">
             {% if files %}
                 {% for file in files %}
@@ -52,7 +67,7 @@
             {% endif %}
         </div>
 
-        <!-- 🔙 Back to dashboard -->
+        <!--  Back to dashboard -->
         <div class="vault-upload">
             <a href="{% url 'vault_dashboard' %}">
                 <button class="vault-btn">

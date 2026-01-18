@@ -179,3 +179,31 @@ def restore_file(request, file_id):
     vault_file.save(update_fields=["is_deleted"])
 
     return redirect("recycle_bin")
+
+
+@login_required
+def empty_recycle_bin(request):
+    if request.method != "POST":
+        return HttpResponseBadRequest("Invalid request")
+
+    deleted_files = VaultFile.objects.filter(
+        owner=request.user,
+        is_deleted=True
+    )
+
+    for file in deleted_files:
+        encrypted_path = os.path.join(
+            settings.MEDIA_ROOT,
+            "vault",
+            "encrypted",
+            file.encrypted_filename
+        )
+
+     
+        if os.path.exists(encrypted_path):
+            os.remove(encrypted_path)
+
+        
+        file.delete()
+
+    return redirect("recycle_bin")

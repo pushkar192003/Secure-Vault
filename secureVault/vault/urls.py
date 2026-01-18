@@ -7,7 +7,7 @@ urlpatterns = [
     path("download/<uuid:file_id>/", views.download_file, name="download_file"),
     path("delete/<uuid:file_id>/", views.delete_file, name="delete_file"),
     path("recycle-bin/", views.recycle_bin, name="recycle_bin"),
-    
+    path("recycle-bin/empty/", views.empty_recycle_bin, name= "empty_recycle_bin"),
     path("restore/<uuid:file_id>/", views.restore_file, name="restore_file"),
     path("delete-permanent/<uuid:file_id>/", views.permanent_delete, name="permanent_delete"),
 ]
