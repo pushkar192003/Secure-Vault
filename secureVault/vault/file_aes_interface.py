@@ -10,13 +10,12 @@ StateArray = (ctypes.c_ubyte * BLOCK_SIZE)
 
 RoundKeysArray = (StateArray * 15)
 
-
-
-lib_path = os.path.join(os.path.dirname(__file__), "aes.dll")
+BASE_DIR = os.path.dirname(__file__)
+DLL_PATH = os.path.join(BASE_DIR, "aes.dll")
 _AES_DLL = None
-
 try:
-    _AES_DLL = ctypes.CDLL(lib_path)
+    
+    _AES_DLL = ctypes.CDLL(DLL_PATH)
     
  
     _AES_DLL.encrypt.argtypes = [ctypes.POINTER(StateArray), ctypes.POINTER(RoundKeysArray)]
@@ -27,7 +26,7 @@ try:
     
 except Exception as e:
  
-    print(f"ERROR: Failed to load AES DLL at {lib_path}. Encryption/Decryption will fail: {e}")
+    print(f"ERROR: Failed to load AES DLL at {DLL_PATH}. Encryption/Decryption will fail: {e}")
 if _AES_DLL is None:
     print("⚠️ WARNING: aes.dll not loaded. Encryption disabled.")
 
