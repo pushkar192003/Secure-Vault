@@ -1,6 +1,8 @@
 🔐 Secure Vault
 
-Secure Vault is a secure file storage system built with Django that encrypts uploaded files using a custom-designed 256‑bit block cipher implemented in C. The project focuses on understanding cryptographic design, key derivation, and system integration, rather than relying solely on standard libraries.
+Secure Vault is a secure file storage system developed using Django and C, that encrypts uploaded files through a modified Rijndael-based encryption algorithm. The system operates with a 256-bit block length and a 256-bit encryption key, supports multiple S-box transformations, and is designed to ensure strong data confidentiality.
+
+The project emphasizes a deep understanding of cryptographic design principles, key derivation mechanisms, and secure system integration, rather than relying solely on standard cryptographic libraries.
 
 > ⚠️ Educational Project: This project is intended for academic and learning purposes. Some cryptographic choices (e.g., ECB mode) are not recommended for real‑world production systems.
 
