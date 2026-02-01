@@ -7,8 +7,17 @@
         <h2 class="vault-title">Secure Vault</h2>
 
         <div class="vault-search">
-            <input type="text" placeholder="Search documents..." />
+            <form method="GET" action="{% url 'search_files' %}">
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Search documents..."
+                    value="{{ query }}"
+                >
+            </form>
         </div>
+
+
 
         <!--  FILE LIST -->
         <div class="vault-list">

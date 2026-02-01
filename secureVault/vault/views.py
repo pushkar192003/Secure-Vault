@@ -207,3 +207,20 @@ def empty_recycle_bin(request):
         file.delete()
 
     return redirect("recycle_bin")
+@login_required
+def search_files(request):
+    query = request.GET.get("q", "").strip()
+
+    files = VaultFile.objects.filter(
+        owner=request.user,
+        is_deleted=False
+    )
+
+    if query:
+        files = files.filter(original_filename__icontains=query)
+
+    return render(request, "vault/dashboard.html", {
+        "files": files,
+        "query": query,
+        "is_search": True
+    })

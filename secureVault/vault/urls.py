@@ -10,4 +10,5 @@ urlpatterns = [
     path("recycle-bin/empty/", views.empty_recycle_bin, name= "empty_recycle_bin"),
     path("restore/<uuid:file_id>/", views.restore_file, name="restore_file"),
     path("delete-permanent/<uuid:file_id>/", views.permanent_delete, name="permanent_delete"),
+    path("search/", views.search_files, name="search_files"),
 ]
